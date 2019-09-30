@@ -41,4 +41,8 @@ public class AuthProvider {
             }
         });
     }
+
+    public void getExamData(String token){
+        authService.getExamData("Bearer " + token)
+    }
 }

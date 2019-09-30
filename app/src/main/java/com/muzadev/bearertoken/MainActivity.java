@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.muzadev.bearertoken.network.AuthProvider;
 import com.muzadev.bearertoken.util.PrefManager;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
@@ -44,6 +48,26 @@ public class MainActivity extends AppCompatActivity {
 
         AuthProvider authProvider = new AuthProvider(this);
         authProvider.login(username, password);
+    }
+
+    private void convertStringToDate() {
+        String dateString = "2019-09-27 22:15:42";
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-mm-dd", Locale.getDefault());
+
+        try {
+            Date tanggalDariServer = sdf.parse(dateString);
+            Date dateNow = new Date();
+
+            if(tanggalDariServer.equals(dateNow)){
+                Toast.makeText(this, "tanggalnya sama", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "tanggalnya berbeda", Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (Exception e) {
+
+        }
+
     }
 
 
